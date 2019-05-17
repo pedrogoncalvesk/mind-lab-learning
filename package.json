@@ -1,8 +1,12 @@
 {
-  "name": "express-mongo-react-redux",
+  "name": "mind-lab-learning",
   "version": "1.0.0",
   "private": true,
   "author": "Krishna Timilsina <bikranshu.t@gmail.com>",
+  "main": "./bin/www",
+  "engines": {
+    "node": "8.15.x"
+  },
   "scripts": {
     "watch": "webpack -d --watch",
     "start": "nodemon ./bin/www",
