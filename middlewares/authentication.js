@@ -1,5 +1,5 @@
-var HttpStatus = require('http-status-codes');
-var jwtToken = require('../utils/jwtToken');
+const HttpStatus = require('http-status-codes');
+const jwtToken = require('../utils/jwtToken');
 
 /**
  * Route authentication middleware to verify a token
@@ -11,14 +11,14 @@ var jwtToken = require('../utils/jwtToken');
  */
 module.exports = function (req, res, next) {
     if (req.headers.authorization) {
-        var token = null;
-        var authorization = req.headers.authorization.split(" ");
+        let token = null;
+        const authorization = req.headers.authorization.split(' ');
         if (authorization.length === 2) {
-            var key = authorization[0];
-            var val = authorization[1];
+            const key = authorization[0];
+            const val = authorization[1];
 
             if (/^Bearer$/i.test(key)) {
-                token = val.replace(/"/g, "");
+                token = val.replace(/"/g, '');
                 // decode token
                 if (token) {
                     // verifies secret and checks exp

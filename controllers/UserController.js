@@ -9,8 +9,9 @@ var User = require('../models/user');
  */
 exports.findAll = function (req, res) {
     User.find({}, function (err, user) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
         res.json(user);
     });
 };
@@ -24,8 +25,9 @@ exports.findAll = function (req, res) {
 exports.store = function (req, res) {
     var newUser = new User(req.body);
     newUser.save(function (err, user) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
         res.json(user);
     });
 };
@@ -38,8 +40,9 @@ exports.store = function (req, res) {
  */
 exports.findById = function (req, res) {
     User.findById(req.params.id, function (err, user) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
         res.json(user);
     });
 };
@@ -52,8 +55,9 @@ exports.findById = function (req, res) {
  */
 exports.update = function (req, res) {
     User.findOneAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
         res.json(user);
     });
 };
@@ -67,9 +71,10 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
     User.remove({
         _id: req.params.id
-    }, function (err, user) {
-        if (err)
+    }, function (err) {
+        if (err) {
             res.send(err);
+        }
         res.json({message: 'User successfully deleted'});
     });
 };

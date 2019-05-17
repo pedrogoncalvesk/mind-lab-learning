@@ -41,7 +41,7 @@ export function logout() {
         cookie.remove(AppConstant.TOKEN, {path: '/'});
         dispatch({type: ActionType.LOG_OUT});
 
-        window.location.href = AppConstant.BASE_URL;
+        window.location.href = AppConstant.ROOT_URL;
         return false;
     };
 }

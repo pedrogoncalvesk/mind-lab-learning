@@ -28,7 +28,7 @@ import * as FlashMessage from './flashMessage';
 /**
  * Actions that are dispatched from crudAction
  */
-var commonActions = {
+const commonActions = {
     list: function (entity, data) {
         return {
             type: ActionType.LIST,
@@ -66,10 +66,10 @@ var commonActions = {
  */
 
 
-export function fetchAll(entity, data) {
+export function fetchAll(entity) {
     return function (dispatch) {
         dispatch(apiAction.apiRequest());
-        return apiService.fetch(entity, data).then((response) => {
+        return apiService.fetch(entity).then((response) => {
             dispatch(apiAction.apiResponse());
             dispatch(commonActions.list(entity, response.data));
         })

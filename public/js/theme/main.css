@@ -1,0 +1,109 @@
+.main-header {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.main-header .logo img {
+    height: 70%;
+}
+
+.main-header .sidebar-toggle {
+    color: #cecece;
+}
+
+.main-header .sidebar-toggle:hover {
+    color: #cecece;
+}
+
+.main-header .navbar .navbar-custom-menu {
+    min-height: 50px;
+}
+
+.main-header .navbar .navbar-custom-menu .login-nav > a {
+    color: #ae2481;
+    font-size: 14px !important;
+    margin-left: .7rem;
+    background-color: #fff;
+}
+
+.wrapper .content-wrapper {
+    margin-left: 0;
+    background-color: #fff;
+}
+
+.wrapper .content-wrapper .content .title-courses {
+    font-family: Raleway;
+    font-size: 48px;
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #474747;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper {
+    padding: 0 2px;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 2rem;
+    margin: 2rem 0;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course .card {
+    font-weight: 400;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    background-color: #f5fafc;
+    height: 100%;
+    color: #6e6f6d !important;
+    position: relative;
+    text-align: left;
+    white-space: initial;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 100%;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course .card a {
+    color: unset;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course .card .header {
+    width: 100%;
+    padding: 22px 96px 14px 8.1%;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course .card .header .title {
+    margin-bottom: 0 !important;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    min-height: 38px;
+}
+
+.wrapper .content-wrapper .content .courses-wrapper .course .card .img-background {
+    height: 144px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -4,7 +4,7 @@ import _ from 'lodash';
 // Import constants
 import * as ActionType from '../constants/actionType';
 
-var initialState = {
+const initialState = {
     products: [],
     selectedItem: {
         product: {},
@@ -22,7 +22,7 @@ export default function (state, action) {
     switch (action.type) {
         case ActionType.LIST:
             newState = _.cloneDeep(state);
-            newState[action.entity] = _.cloneDeep(action.data.data);
+            newState[action.entity] = _.cloneDeep(action.data);
             return newState;
 
         case ActionType.SELECT_ITEM:

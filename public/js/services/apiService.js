@@ -4,7 +4,7 @@ import * as Converter from '../utils/converter';
 
 import AppConstant from '../constants/app';
 
-export function fetch(pathParam, data) {
+export function fetch(pathParam) {
     return ApiUtil.fetch(AppConstant.API_URL, pathParam.toLowerCase());
 }
 

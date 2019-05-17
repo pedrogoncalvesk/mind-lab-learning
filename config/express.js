@@ -1,18 +1,19 @@
+/* eslint-disable no-console */
 /**
  * Module dependencies.
  */
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var helmet = require('helmet');
-var compression = require('compression');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
 require('dotenv').config();
 
-var constant = require(__dirname + '/constants');
+const constant = require(__dirname + '/constants');
 
 module.exports = function (app) {
 
@@ -23,7 +24,7 @@ module.exports = function (app) {
     app.set('view engine', 'pug');
 
     // uncomment after placing your favicon in /public
-    // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+    app.use(favicon(path.join(constant.assetsDir, 'favicon.ico')));
 
     app.use(cors());
     app.use(helmet());

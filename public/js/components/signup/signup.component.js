@@ -23,10 +23,6 @@ class SignupForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillMount() {
-        window.$('body').addClass('hold-transition login-page');
-    }
-
     componentWillUnmount() {
         this.props.actions.removeFlashMessage();
     }

@@ -14,7 +14,9 @@ exports.authenticate = function (req, res) {
         email: req.body.email
     }, function (err, user) {
 
-        if (err) throw err;
+        if (err) {
+            throw err;
+        }
 
         if (user) {
             user.comparePassword(req.body.password, function (err, isMatch) {
