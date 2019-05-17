@@ -1,5 +1,5 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 // Initialize express
 require('./config/express')(app);
@@ -10,11 +10,11 @@ require('./config/routes')(app);
 // Initialize database
 require('./config/database');
 
-var HttpStatus = require('http-status-codes');
+const HttpStatus = require('http-status-codes');
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = HttpStatus.UNAUTHORIZED;
     next(err);
 });
