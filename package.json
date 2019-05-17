@@ -1,8 +1,22 @@
 {
   "name": "mind-lab-learning",
   "version": "1.0.0",
-  "private": true,
-  "author": "Krishna Timilsina <bikranshu.t@gmail.com>",
+  "description": "Base project using the MERN stack",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pedrogoncalvesk/mind-lab-learning.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "React",
+    "Node",
+    "Redux",
+    "Mongoose",
+    "MERN"
+  ],
+  "author": "Pedro Pereira <pedrogoncalvesp.95@gmail.com>",
+  "license": "MIT",
   "main": "./bin/www",
   "engines": {
     "node": "8.15.x"
