@@ -25,7 +25,7 @@ class LandingPage extends Component {
                     {courses ? courses.map(course => (
                         <div key={course._id} className="course">
                             <div className="card">
-                                <a href="/curso-online-comunicacao">
+                                <a href={`/#/course/${course._id}`}>
                                     <div className="header">
                                         <p className="title">
                                             {course.title}
@@ -34,14 +34,13 @@ class LandingPage extends Component {
                                     <div className="img-background"
                                          style={{ backgroundImage: 'url(' + course.cover + ')' }}>
                                     </div>
-
                                     <div className="description">
                                         <p>{course.description}</p>
                                     </div>
                                 </a>
-                                <div className="btns-action-meus-cursos" style={{ textAlign: 'left' }}>
-                                    <a href="/curso-online-comunicacao"
-                                       className="btn-continuar waves-effect waves-dark btn">
+                                <div className="actions">
+                                    <a href={`/#/course/${course._id}`}
+                                       className="btn">
                                         Matricular
                                     </a>
                                 </div>

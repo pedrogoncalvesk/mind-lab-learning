@@ -18,9 +18,9 @@ class Header extends Component {
                     <img src="js/theme/img/logo.png" alt="logo" />
                 </a>
                 <nav className="navbar navbar-static-top">
-                    {/*<a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">*/}
-                    {/*<span className="sr-only">Toggle navigation</span>*/}
-                    {/*</a>*/}
+                    <a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span className="sr-only">Toggle navigation</span>
+                    </a>
                     {isAuthenticated ? <LoggedMenu /> : <Menu />}
                 </nav>
             </header>
