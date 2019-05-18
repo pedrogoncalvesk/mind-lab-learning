@@ -38,13 +38,13 @@ export default function (state, action) {
         case ActionType.DELETE:
             newState = _.cloneDeep(state);
             let data = newState[action.entity];
-            let index = _.indexOf(data, _.find(data, {id: action.id}));
+            let index = _.indexOf(data, _.find(data, { id: action.id }));
             data.splice(index, 1);
             return newState;
 
         case ActionType.CLEAR_LIST:
             newState = _.cloneDeep(state);
-            newState[action.entity ] = {};
+            newState[action.entity] = {};
             return newState;
 
         case ActionType.CLEAR_SELECTED_ITEM:

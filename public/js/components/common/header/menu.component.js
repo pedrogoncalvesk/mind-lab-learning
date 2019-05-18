@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Menu extends Component {
 
@@ -6,13 +7,12 @@ class Menu extends Component {
         return (
             <div className="navbar-custom-menu">
                 <div className="login-nav">
-                    <a className="btn" href="#/login">
+                    <Link to="/login" className="btn">
                         Fazer Login
-                    </a>
-                    <a className="btn" href="#/signup">
+                    </Link>
+                    <Link to="/signup" className="btn fill">
                         Criar Conta
-                    </a>
-
+                    </Link>
                 </div>
             </div>
         );

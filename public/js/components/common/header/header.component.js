@@ -10,19 +10,64 @@ class Header extends Component {
         isAuthenticated: PropTypes.bool.isRequired,
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuActive: false,
+            width: 0,
+            height: 0
+        };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        let { menuActive } = this.state;
+        const width = window.innerWidth;
+
+        if (width <= 767 && menuActive === true) {
+            menuActive = false;
+        } else if (width > 767 && menuActive === false) {
+            menuActive = true;
+        }
+        this.setState({
+            menuActive,
+            width,
+            height: window.innerHeight
+        });
+    }
+
+    toggleMenu(e) {
+        e.preventDefault();
+        let { menuActive } = this.state;
+        this.setState({ menuActive: !menuActive });
+    }
+
     render() {
         const { isAuthenticated } = this.props;
+        const { menuActive } = this.state;
+
         return (
             <header className="main-header">
                 <a href="#" className="logo">
                     <img src="js/theme/img/logo.png" alt="logo" />
                 </a>
-                <nav className="navbar navbar-static-top">
-                    <a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span className="sr-only">Toggle navigation</span>
-                    </a>
-                    {isAuthenticated ? <LoggedMenu /> : <Menu />}
-                </nav>
+                <a href="#" className="sidebar-toggle" onClick={this.toggleMenu.bind(this)}>
+                    <span className="sr-only">Toggle navigation</span>
+                </a>
+                {menuActive ? (
+                    <nav className="navbar navbar-static-top">
+                        {isAuthenticated ? <LoggedMenu /> : <Menu />}
+                    </nav>
+                ) : ''}
             </header>
         );
     }

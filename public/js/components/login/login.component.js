@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 
 /**
  * Import all authService as an object.
@@ -39,11 +39,11 @@ class LoginForm extends Component {
 
         return (
             <div className="login-box">
-                <div className="login-logo">
-                    <a href="#"><b>Admin</b>LTE</a>
-                </div>
+                <a href="#" className="logo">
+                    <img src="js/theme/img/logo.png" alt="logo" />
+                </a>
                 <div className="login-box-body">
-                    <p className="login-box-msg">Sign into your account via email and password.</p>
+                    <p className="login-box-msg">Faça login na sua conta com seu email e senha.</p>
 
                     <FlashMessage message={message} />
 
@@ -61,7 +61,7 @@ class LoginForm extends Component {
                             name="password"
                             component={renderText}
                             type="password"
-                            label="Password"
+                            label="Senha"
                         >
                             <span className="glyphicon glyphicon-lock form-control-feedback"></span>
                         </Field>
@@ -69,16 +69,16 @@ class LoginForm extends Component {
                         <div className="row">
                             <div className="col-xs-4">
                                 <button type="submit" className="btn btn-primary btn-block btn-flat"
-                                        disabled={submitting}>Sign In
+                                        disabled={submitting}>Login
                                 </button>
                             </div>
                         </div>
                         <div className="row">
                             <br />
                             <div className="col-xs-8">
-                                <Link to={'/forgot'}>I forgot my password</Link>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <Link to={'/signup'}>Sign Up</Link>
+                                {/*<Link to={'/forgot'}>I forgot my password</Link>*/}
+                                {/*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/}
+                                <Link to={'/signup'}>Cadastre-se</Link>
                             </div>
                         </div>
                     </form>
@@ -117,13 +117,13 @@ function mapDispatchToProps(dispatch) {
 const validateLogin = values => {
     const errors = {};
     if (!values.email) {
-        errors.email = '(The email field is required.)';
+        errors.email = '(O campo de email é obrigatório.)';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address.';
+        errors.email = 'Email inválido.';
     }
 
     if (!values.password) {
-        errors.password = '(The password field is required.)';
+        errors.password = '(O campo de senha é obrigatório.)';
     }
     return errors;
 };

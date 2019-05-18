@@ -25,14 +25,18 @@ import store from './store/store';
  * Import all constants as an object.
  */
 import * as ActionType from './constants/actionType';
+import AppConstant from './constants/app';
 
 const history = syncHistoryWithStore(hashHistory, store);
-const token = cookie.load('token');
+const token = cookie.load(AppConstant.TOKEN);
+const first_name = cookie.load(AppConstant.USER_FIRST_NAME);
+const last_name = cookie.load(AppConstant.USER_LAST_NAME);
 if (token) {
     // Update application state. User has token and is probably authenticated
     store.dispatch({
         type: ActionType.LOG_IN_SUCCESS,
-        payload: token
+        payload: token,
+        user: { first_name, last_name }
     });
 }
 

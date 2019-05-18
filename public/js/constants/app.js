@@ -4,6 +4,8 @@ const appConstant = {
     BASE_URL: `${process.env.HOST || ''}`,
     BEARER: 'Bearer',
     TOKEN: 'token',
+    USER_FIRST_NAME: 'first_name',
+    USER_LAST_NAME: 'last_name',
 };
 
-export default appConstant
+export default appConstant;

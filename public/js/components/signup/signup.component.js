@@ -37,11 +37,11 @@ class SignupForm extends Component {
 
         return (
             <div className="login-box">
-                <div className="login-logo">
-                    <a href="#">Sign Up</a>
-                </div>
+                <a href="#" className="logo">
+                    <img src="js/theme/img/logo.png" alt="logo" />
+                </a>
                 <div className="login-box-body">
-                    <p className="login-box-msg">Introduce yourself</p>
+                    <p className="login-box-msg">Preencha suas informações</p>
 
                     <FlashMessage message={message}/>
 
@@ -50,14 +50,14 @@ class SignupForm extends Component {
                             name="first_name"
                             component={renderText}
                             type="text"
-                            label="First Name"
+                            label="Nome"
                         >
                         </Field>
                         <Field
                             name="last_name"
                             component={renderText}
                             type="text"
-                            label="Last Name"
+                            label="Sobrenome"
                         >
                         </Field>
                         <Field
@@ -71,7 +71,7 @@ class SignupForm extends Component {
                             name="password"
                             component={renderText}
                             type="password"
-                            label="Password"
+                            label="Senha"
                         >
                         </Field>
 
@@ -80,7 +80,7 @@ class SignupForm extends Component {
                             </div>
                             <div className="col-xs-4">
                                 <button type="submit" className="btn btn-primary btn-block btn-flat"
-                                        disabled={submitting}>Sign Up
+                                        disabled={submitting}>Cadastrar
                                 </button>
                             </div>
                         </div>
@@ -119,21 +119,21 @@ function mapDispatchToProps(dispatch) {
 const validateSignup = values => {
     const errors = {};
     if (!values.first_name) {
-        errors.first_name = '(The first name is required.)'
+        errors.first_name = '(O nome é obrigatório.)'
     }
 
     if (!values.last_name) {
-        errors.last_name = '(The last name is required.)'
+        errors.last_name = '(O sobrenome é obrigatório.)'
     }
 
     if (!values.email) {
-        errors.email = '(The email field is required.)'
+        errors.email = '(O campo de email é obrigatório.)'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address.'
+        errors.email = 'Email inválido.'
     }
 
     if (!values.password) {
-        errors.password = '(The password is required.)'
+        errors.password = '(A senha é obrigatória.)'
     }
 
 

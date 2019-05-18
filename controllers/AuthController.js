@@ -23,11 +23,11 @@ exports.authenticate = function (req, res) {
                 if (isMatch) {
                     // if user is found and password is right
                     // create a token
-                    var token = jwt.sign(user, process.env.TOKEN_SECRET_KEY);
+                    const token = jwt.sign(user, process.env.TOKEN_SECRET_KEY);
                     res.json({
                         success: true,
-                        user: user,
-                        token: token
+                        user,
+                        token
                     });
                 } else {
                     logger.log('error', 'Authentication failed. Invalid password.');

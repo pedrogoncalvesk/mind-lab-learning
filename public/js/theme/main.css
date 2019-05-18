@@ -5,12 +5,43 @@
     background: #fff;
 }
 
-.main-header .logo img {
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+    color: #474747;
+}
+
+.login-box .logo {
+    -webkit-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+
+.main-header .logo img,
+.login-box .logo img {
     height: 70%;
 }
 
 .main-header .sidebar-toggle {
     color: #cecece;
+    position: absolute;
+    top: .5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    padding: .5rem 1.25rem;
+    border: 1px solid;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .main-header .sidebar-toggle:hover {
@@ -19,13 +50,56 @@
 
 .main-header .navbar .navbar-custom-menu {
     min-height: 50px;
+    float: unset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+    .main-header .sidebar-toggle {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .main-header .logo {
+        width: 230px;
+    }
+
+    .main-header .navbar .navbar-custom-menu {
+        justify-content: center;
+    }
 }
 
 .main-header .navbar .navbar-custom-menu .login-nav > a {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+
     color: #ae2481;
     font-size: 14px !important;
     margin-left: .7rem;
     background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.main-header .navbar .navbar-custom-menu .login-nav > a.fill {
+    color: #fff !important;
+    background-color: #ae2481 !important;
+    border-radius: 2px !important;
 }
 
 .wrapper .content-wrapper {
@@ -110,8 +184,7 @@
 
 .wrapper .content-wrapper .content .courses-wrapper .course .card .img-background {
     height: 144px;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: no-repeat center;
     background-size: cover;
 }
 

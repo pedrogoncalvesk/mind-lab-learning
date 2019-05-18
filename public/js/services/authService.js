@@ -17,20 +17,26 @@ import * as apiAction from '../actions/apiAction';
  */
 import * as FlashMessage from '../actions/flashMessage';
 
-export function login({email, password}) {
+export function login({ email, password }) {
     return function (dispatch) {
         dispatch(apiAction.apiRequest());
-        axios.post(AppConstant.API_URL + 'auth/login', {email, password}).then((response) => {
-            dispatch({
-                type: ActionType.LOG_IN_SUCCESS,
-                payload: response.data.token
-            });
-            cookie.save(AppConstant.TOKEN, response.data.token, {path: '/'});
-            window.location.href = AppConstant.ROOT_URL + 'dashboard';
-        })
+        axios.post(AppConstant.API_URL + 'auth/login', { email, password }).then((response) => {
+                dispatch({
+                    type: ActionType.LOG_IN_SUCCESS,
+                    payload: response.data.token,
+                    user: {
+                        first_name: response.data.user.first_name,
+                        last_name: response.data.user.last_name
+                    }
+                });
+                cookie.save(AppConstant.TOKEN, response.data.token, { path: '/' });
+                cookie.save(AppConstant.USER_FIRST_NAME, response.data.user.first_name, { path: '/' });
+                cookie.save(AppConstant.USER_LAST_NAME, response.data.user.last_name, { path: '/' });
+                window.location.href = AppConstant.ROOT_URL + 'courses';
+            })
             .catch((error) => {
                 authErrorHandler(dispatch, error.response, ActionType.LOG_IN_FAILURE);
-                dispatch(FlashMessage.addFlashMessage('error', 'Invalid username and password.'));
+                dispatch(FlashMessage.addFlashMessage('error', 'Usuário ou senha inválidos.'));
             });
     };
 }
@@ -38,8 +44,10 @@ export function login({email, password}) {
 
 export function logout() {
     return function (dispatch) {
-        cookie.remove(AppConstant.TOKEN, {path: '/'});
-        dispatch({type: ActionType.LOG_OUT});
+        cookie.remove(AppConstant.TOKEN, { path: '/' });
+        cookie.remove(AppConstant.USER_FIRST_NAME, { path: '/' });
+        cookie.remove(AppConstant.USER_LAST_NAME, { path: '/' });
+        dispatch({ type: ActionType.LOG_OUT });
 
         window.location.href = AppConstant.ROOT_URL;
         return false;
@@ -51,7 +59,7 @@ export function authErrorHandler(dispatch, error, type) {
 
     // NOT AUTHENTICATED ERROR
     if (error.status === 401) {
-        errorMessage = 'You are not authorized to do this. Please login and try again.';
+        errorMessage = 'Você não está autorizado a fazer isso. Por favor, faça login e tente novamente.';
     }
 
     dispatch({
