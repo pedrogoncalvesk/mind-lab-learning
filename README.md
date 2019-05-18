@@ -2,6 +2,8 @@
 
 [Mind Lab](https://www.mindlab.com.br/) Learning é um projeto base para demonstrar o uso da stack [MERN](https://scotch.io/@deityhub/getting-started-with-the-mern-stack) (MongoDB, Express, React, e Node.js) em um contexto de plataforma de aprendizagem. O projeto foi criado utilizando como base o repositório [express-mongo-react-redux](https://github.com/Bikranshu/express-mongo-react-redux) do [@Bikranshu](https://github.com/Bikranshu) e a inspiração de exemplo que está sendo usada é a plataforma [Veduca](https://veduca.org/). O arquivo ```.env.example``` corresponde as variáveis de ambiente necessárias para executar o projeto, conectando também em uma instância do [MongoDB Cloud](https://www.mongodb.com/cloud/atlas/lp/general/try). Outras tecnologias e ferramentas foram empregadas para a criação do projeto: Webpack, Babel, Mongoose, React Router, JWT, Redux, PugJs e Bootstrap.
 
+**Veja** a [demonstração](https://mind-lab-learning.herokuapp.com/)
+
 ## Get Started
 
 ### 1. Pré-requisitos
