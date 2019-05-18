@@ -42,6 +42,7 @@
     "jsonwebtoken": "^7.4.3",
     "lodash": "^4.17.4",
     "mongoose": "^4.11.7",
+    "mongoose-findorcreate": "^3.0.0",
     "morgan": "^1.9.1",
     "pug": "~2.0.0-beta10",
     "react": "^15.6.1",
