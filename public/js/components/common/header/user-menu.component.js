@@ -4,14 +4,8 @@ import { connect } from 'react-redux';
 
 // Import authService
 import * as authService from '../../../services/authService';
-import { fetchById } from '../../../actions/crudAction';
 
 class UserMenu extends Component {
-
-    componentWillMount() {
-        const { actions: { fetch } } = this.props;
-        fetch('user');
-    }
 
     logOut(e) {
         e.preventDefault();
@@ -57,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(_.assign({ fetch: fetchById }, authService), dispatch)
+    actions: bindActionCreators(_.assign({}, authService), dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
