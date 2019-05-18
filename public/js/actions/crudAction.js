@@ -32,16 +32,16 @@ const commonActions = {
     list: function (entity, data) {
         return {
             type: ActionType.LIST,
-            entity: entity,
-            data: data
+            entity,
+            data
         }
     },
 
     selectItem: function (entity, data) {
         return {
             type: ActionType.SELECT_ITEM,
-            entity: entity,
-            data: data
+            entity,
+            data
         }
     },
 

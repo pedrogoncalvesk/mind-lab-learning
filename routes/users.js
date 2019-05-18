@@ -30,12 +30,12 @@ router.route('/users')
     });
 
 
-/*  "/api/users/:id"
+/*  "/api/user/:id"
  *    GET: find user by id
  *    PUT: update user by id
  *    DELETE: deletes user by id
  */
-router.route('/users/:id')
+router.route('/user/:id')
 
     /**
      * Find the user with that id

@@ -13,10 +13,10 @@ export function serialize(data) {
 }
 
 export function getPathParam() {
-    var args = arguments;
-    var params = [];
+    const args = arguments;
+    const params = [];
 
-    for (var a in args) {
+    for (let a in args) {
         params.push(args[a]);
     }
     return params.join('/');

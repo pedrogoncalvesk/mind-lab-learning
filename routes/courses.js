@@ -30,12 +30,12 @@ router.route('/courses')
     });
 
 
-/*  "/api/courses/:id"
+/*  "/api/course/:id"
  *    GET: find course by id
  *    PUT: update course by id
  *    DELETE: deletes course by id
  */
-router.route('/courses/:id')
+router.route('/course/:id')
 
     /**
      * Find the course with that id

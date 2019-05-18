@@ -1,5 +1,5 @@
-import React, {Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 export default function (ComposedComponent) {
 
@@ -15,7 +15,7 @@ export default function (ComposedComponent) {
 
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-                this.context.router.push('/');
+                this.context.router.replace('/login');
             }
         }
 
@@ -24,7 +24,6 @@ export default function (ComposedComponent) {
         //         this.context.router.push('/dashboard');
         //     }
         // }
-
 
         render() {
             return <ComposedComponent {...this.props} />;

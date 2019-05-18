@@ -24,25 +24,33 @@ module.exports = function (req, res, next) {
                     // verifies secret and checks exp
                     jwtToken.verifyToken(token, function (err, decoded) {
                         if (err) {
-                            return res.json({success: false, message: 'You are not authenticated!'});
-                        } else {
-                            // if everything is good, save to request for use in other routes
-                            req.decoded = decoded;
-                            next();
+                            return next(JSON.stringify({
+                                message: 'You are not authenticated!',
+                                status: HttpStatus.UNAUTHORIZED
+                            }));
                         }
+                        // if everything is good, save to request for use in other routes
+                        req.decoded = decoded;
+                        next();
                     });
                 }
             }
         } else {
             // if there is no token
             // return an error
-            res.status(HttpStatus.UNAUTHORIZED).send('You are not authorized to perform this operation!');
+            return next(JSON.stringify({
+                message: 'You are not authorized to perform this operation!',
+                status: HttpStatus.UNAUTHORIZED
+            }));
 
         }
     } else {
         // if there is no token
         // return an error
-        res.status(HttpStatus.UNAUTHORIZED).send('You are not authorized to perform this operation!');
+        return next(JSON.stringify({
+            message: 'You are not authorized to perform this operation!',
+            status: HttpStatus.UNAUTHORIZED
+        }));
 
     }
 };

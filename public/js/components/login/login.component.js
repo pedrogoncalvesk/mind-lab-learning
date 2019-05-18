@@ -1,15 +1,15 @@
-import React, {Component, PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {Link, IndexLink} from 'react-router';
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Link, IndexLink } from 'react-router';
 
 /**
  * Import all authService as an object.
  */
 import * as authService from '../../services/authService';
 
-import * as flashMessage  from '../../actions/flashMessage';
+import * as flashMessage from '../../actions/flashMessage';
 
 /**
  * Import custom components
@@ -35,7 +35,7 @@ class LoginForm extends Component {
 
     render() {
         let message = this.props.message;
-        const {handleSubmit, submitting} = this.props;
+        const { handleSubmit, submitting } = this.props;
 
         return (
             <div className="login-box">
@@ -45,7 +45,7 @@ class LoginForm extends Component {
                 <div className="login-box-body">
                     <p className="login-box-msg">Sign into your account via email and password.</p>
 
-                    <FlashMessage message={message}/>
+                    <FlashMessage message={message} />
 
                     <form method="post" onSubmit={handleSubmit(this.handleSubmit)}>
                         <Field
@@ -74,7 +74,7 @@ class LoginForm extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <br/>
+                            <br />
                             <div className="col-xs-8">
                                 <Link to={'/forgot'}>I forgot my password</Link>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -102,7 +102,7 @@ function mapStateToProps(state) {
         token: state.auth.token,
         isAuthenticated: state.auth.isAuthenticated,
         message: state.flash.message
-    }
+    };
 }
 
 /**
@@ -111,21 +111,21 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(_.assign({}, authService, flashMessage), dispatch)
-    }
+    };
 }
 
 const validateLogin = values => {
     const errors = {};
     if (!values.email) {
-        errors.email = '(The email field is required.)'
+        errors.email = '(The email field is required.)';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address.'
+        errors.email = 'Invalid email address.';
     }
 
     if (!values.password) {
-        errors.password = '(The password field is required.)'
+        errors.password = '(The password field is required.)';
     }
-    return errors
+    return errors;
 };
 
 /**
@@ -134,4 +134,4 @@ const validateLogin = values => {
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
     form: 'LoginForm', // ←A Unique identifier for this form
     validate: validateLogin  // ←Callback function for client-side validation
-})(LoginForm))
+})(LoginForm));

@@ -27,7 +27,7 @@ export default function (state, action) {
 
         case ActionType.SELECT_ITEM:
             newState = _.cloneDeep(state);
-            newState.selectedItem[action.entity] = action.data.data;
+            newState.selectedItem[action.entity] = action.data;
             return newState;
 
         case ActionType.UPDATE_SELECTED_ITEM:

@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
-import * as flashMessage  from '../../actions/flashMessage';
+import * as flashMessage from '../../actions/flashMessage';
 
 /**
  * Import custom components
@@ -29,7 +29,7 @@ class ForgotForm extends Component {
 
     render() {
         let message = this.props.message;
-        const {handleSubmit, submitting} = this.props;
+        const { handleSubmit, submitting } = this.props;
 
         return (
             <div className="login-box">
@@ -39,7 +39,7 @@ class ForgotForm extends Component {
                 <div className="login-box-body">
                     <p className="login-box-msg">Enter your email address and we'll send you a link to reset it.</p>
 
-                    <FlashMessage message={message}/>
+                    <FlashMessage message={message} />
 
                     <form method="post" onSubmit={handleSubmit(this.handleSubmit)}>
                         <Field
@@ -79,7 +79,7 @@ ForgotForm.propTypes = {
 function mapStateToProps(state) {
     return {
         message: state.flash.message
-    }
+    };
 }
 
 /**
@@ -88,18 +88,18 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(_.assign({}, flashMessage), dispatch)
-    }
+    };
 }
 
 const validateForgot = values => {
     const errors = {};
     if (!values.email) {
-        errors.email = '(The email field is required.)'
+        errors.email = '(The email field is required.)';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address.'
+        errors.email = 'Invalid email address.';
     }
 
-    return errors
+    return errors;
 };
 
 /**
@@ -108,4 +108,4 @@ const validateForgot = values => {
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
     form: 'ForgotForm', // ←A Unique identifier for this form
     validate: validateForgot  // ←Callback function for client-side validation
-})(ForgotForm))
+})(ForgotForm));
