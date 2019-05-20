@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
-const renderRadioGroup = ({input, label, type, data, meta: {touched, error, invalid, warning}}) => (
+const renderRadioGroup = ({ input, label, type, data, meta: { touched, error, invalid, warning } }) => (
 
     <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
         <label htmlFor={input.name}
@@ -9,12 +10,12 @@ const renderRadioGroup = ({input, label, type, data, meta: {touched, error, inva
         <div className="col-md-8">
             <div className="col-sm-7">
                 <label>
-                    <input {...input} type={type} value="0" className="flat-red" id={input.name} checked={data == 0}/>
+                    <input {...input} type={type} value="0" className="flat-red" id={input.name} checked={data == 0} />
                     Open
                 </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <label>
-                    <input {...input} type={type} value="1" className="flat-red" id={input.name} checked={data == 1}/>
+                    <input {...input} type={type} value="1" className="flat-red" id={input.name} checked={data == 1} />
                     Close
                 </label>
                 <div className="help-block">

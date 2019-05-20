@@ -30,9 +30,6 @@ class UserMenu extends Component {
                         </p>
                     </li>
                     <li className="user-footer">
-                        {/*<div className="pull-left">*/}
-                        {/*<a href="#" className="btn btn-default btn-flat">Profile</a>*/}
-                        {/*</div>*/}
                         <div className="pull-right">
                             <a href="#" className="btn btn-default btn-flat" onClick={this.logOut.bind(this)}>
                                 Logout

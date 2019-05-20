@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
-const renderSelect = ({input, label, data, meta: {touched, error, invalid, warning}, children}) => (
+const renderSelect = ({ input, label, data, meta: { touched, error, invalid, warning }, children }) => (
 
     <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
         <label className="col-md-4 control-label">{label}:</label>
@@ -22,7 +23,7 @@ renderSelect.propTypes = {
     label: PropTypes.string,
     data: PropTypes.string,
     meta: PropTypes.object,
-    children: React.PropTypes.array.isRequired
+    children: PropTypes.array.isRequired
 };
 
 export default renderSelect;

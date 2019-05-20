@@ -1,21 +1,19 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 export default function (ComposedComponent) {
 
     class Authenticate extends Component {
 
-        static contextTypes = {
-            router: PropTypes.object.isRequired
-        };
-
         static propTypes = {
-            isAuthenticated: PropTypes.bool.isRequired,
+            history: PropTypes.object.isRequired,
+            isAuthenticated: PropTypes.bool.isRequired
         };
 
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-                this.context.router.replace('/login');
+                this.props.history.replace('/login');
             }
         }
 
@@ -30,11 +28,9 @@ export default function (ComposedComponent) {
         }
     }
 
-    function mapStateToProps(state) {
-        return {
-            isAuthenticated: state.auth.isAuthenticated
-        };
-    }
+    const mapStateToProps = state => ({
+        isAuthenticated: state.auth.isAuthenticated
+    });
 
     return connect(mapStateToProps)(Authenticate);
 }

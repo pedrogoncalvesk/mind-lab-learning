@@ -1,5 +1,8 @@
 import axios from 'axios';
-import cookie from 'react-cookie';
+import cookies from '../utils/cookies';
+
+const cookie = cookies();
+
 
 /**
  * Import all constants as an object.
@@ -29,9 +32,9 @@ export function login({ email, password }) {
                         last_name: response.data.user.last_name
                     }
                 });
-                cookie.save(AppConstant.TOKEN, response.data.token, { path: '/' });
-                cookie.save(AppConstant.USER_FIRST_NAME, response.data.user.first_name, { path: '/' });
-                cookie.save(AppConstant.USER_LAST_NAME, response.data.user.last_name, { path: '/' });
+                cookie.set(AppConstant.TOKEN, response.data.token, { path: '/' });
+                cookie.set(AppConstant.USER_FIRST_NAME, response.data.user.first_name, { path: '/' });
+                cookie.set(AppConstant.USER_LAST_NAME, response.data.user.last_name, { path: '/' });
                 window.location.href = AppConstant.ROOT_URL + 'courses';
             })
             .catch((error) => {

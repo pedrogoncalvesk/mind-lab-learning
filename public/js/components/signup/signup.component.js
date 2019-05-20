@@ -1,13 +1,14 @@
-import React, {Component, PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 
 import Common from '../../constants/common';
 import * as apiAction from '../../actions/apiAction';
 import * as crudAction from '../../actions/crudAction';
-import * as flashMessage  from '../../actions/flashMessage';
+import * as flashMessage from '../../actions/flashMessage';
 
 /**
  * Import custom components
@@ -33,7 +34,7 @@ class SignupForm extends Component {
 
     render() {
         let message = this.props.message;
-        const {handleSubmit, submitting} = this.props;
+        const { handleSubmit, submitting } = this.props;
 
         return (
             <div className="login-box">
@@ -43,7 +44,7 @@ class SignupForm extends Component {
                 <div className="login-box-body">
                     <p className="login-box-msg">Preencha suas informações</p>
 
-                    <FlashMessage message={message}/>
+                    <FlashMessage message={message} />
 
                     <form method="post" onSubmit={handleSubmit(this.handleSubmit)}>
                         <Field
@@ -104,7 +105,7 @@ function mapStateToProps(state) {
     return {
         message: state.flash.message,
         apiState: state.api,
-    }
+    };
 }
 
 /**
@@ -113,31 +114,31 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(_.assign({}, crudAction, apiAction, flashMessage), dispatch)
-    }
+    };
 }
 
 const validateSignup = values => {
     const errors = {};
     if (!values.first_name) {
-        errors.first_name = '(O nome é obrigatório.)'
+        errors.first_name = '(O nome é obrigatório.)';
     }
 
     if (!values.last_name) {
-        errors.last_name = '(O sobrenome é obrigatório.)'
+        errors.last_name = '(O sobrenome é obrigatório.)';
     }
 
     if (!values.email) {
-        errors.email = '(O campo de email é obrigatório.)'
+        errors.email = '(O campo de email é obrigatório.)';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Email inválido.'
+        errors.email = 'Email inválido.';
     }
 
     if (!values.password) {
-        errors.password = '(A senha é obrigatória.)'
+        errors.password = '(A senha é obrigatória.)';
     }
 
 
-    return errors
+    return errors;
 };
 
 /**
@@ -146,4 +147,4 @@ const validateSignup = values => {
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
     form: 'SignupForm', // ←A Unique identifier for this form
     validate: validateSignup  // ←Callback function for client-side validation
-})(SignupForm))
+})(SignupForm));

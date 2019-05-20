@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class FlashMessage extends Component {
@@ -12,8 +13,8 @@ class FlashMessage extends Component {
 
         const type = this.props.message.type;
         const text = this.props.message.text;
-        
-        if(!text){
+
+        if (!text) {
             return null;
         }
         return (
