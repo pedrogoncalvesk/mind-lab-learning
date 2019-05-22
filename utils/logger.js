@@ -1,9 +1,9 @@
-var fs = require('fs');
-var winston = require('winston');
+const fs = require('fs');
+const winston = require('winston');
 require('winston-daily-rotate-file');
 
-var tsFormat = new Date().toISOString();
-var logDir = process.env.LOGGING_DIR || 'logs';
+const tsFormat = new Date().toISOString();
+const logDir = process.env.LOGGING_DIR || 'logs';
 
 // Create logs directory if it does not exist
 if (!fs.existsSync(logDir)) {

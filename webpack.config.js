@@ -1,15 +1,15 @@
 'use strict';
-var webpack = require('webpack');
+require('webpack');
 
-var config = {
-    context: __dirname + '/public/js',
+const config = {
+    context: __dirname + '/public/src',
     entry: {
         app: './main.js',
     },
     output: {
-        path: __dirname + '/public/js/build', //  destination
+        path: __dirname + '/public/static', //  destination
         filename: 'bundle.js',
-        publicPath: "/",
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -23,9 +23,9 @@ var config = {
         ]
     },
     devServer: {
-        contentBase: __dirname + '/public/js',
+        contentBase: __dirname + '/public/src',
     },
-    devtool: "eval-source-map" // Default development sourcemap
+    devtool: 'eval-source-map' // Default development sourcemap
 };
 
 module.exports = config;

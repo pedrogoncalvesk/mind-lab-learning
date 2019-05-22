@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../controllers/UserController');
-var isAuthenticated = require('../middlewares/authentication');
+const express = require('express');
+const router = express.Router();
+const User = require('../controllers/UserController');
+const isAuthenticated = require('../middlewares/authentication');
 
 /*  "/api/users"
  *    GET: finds all users

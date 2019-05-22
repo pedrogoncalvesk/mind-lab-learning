@@ -1,1 +1,1 @@
-web: node ./bin/www
+web: webpack build && node ./bin/www
