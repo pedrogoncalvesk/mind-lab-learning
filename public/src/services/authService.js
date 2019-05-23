@@ -39,6 +39,7 @@ export function login({ email, password }) {
             .catch((error) => {
                 authErrorHandler(dispatch, error.response, ActionType.LOG_IN_FAILURE);
                 dispatch(FlashMessage.addFlashMessage('error', 'Usuário ou senha inválidos.'));
+                throw error;
             });
     };
 }
