@@ -1,5 +1,6 @@
-const commons = {
-    Users: 'users'
+const Common = {
+    Users: 'users',
+    Courses: 'courses'
 };
 
-export default commons
+export default Common;

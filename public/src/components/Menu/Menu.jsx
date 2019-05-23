@@ -15,19 +15,19 @@ class Menu extends Component {
             <div>
                 <Button
                     variant="contained"
-                    color="default"
-                    component={Link}
-                    to="/login"
-                    className={classes.button}>
-                    Fazer Login
-                </Button>
-                <Button
-                    variant="contained"
                     color="secondary"
                     component={Link}
                     to="/signup"
                     className={classes.button}>
                     Criar conta
+                </Button>
+                <Button
+                    variant="contained"
+                    color="default"
+                    component={Link}
+                    to="/login"
+                    className={classes.button}>
+                    Fazer Login
                 </Button>
             </div>
         );

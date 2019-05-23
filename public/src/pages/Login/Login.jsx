@@ -9,6 +9,7 @@ import { Paper, Typography, InputAdornment, Snackbar, Button, Grid } from '@mate
 import Email from '@material-ui/icons/Email';
 import LockOutlined from '@material-ui/icons/LockOutlined';
 
+import Common from '../../constants/common';
 import * as authService from '../../services/authService';
 import * as flashMessage from '../../actions/flashMessage';
 
@@ -51,7 +52,9 @@ class Login extends Component {
     };
 
     handleSubmit(formProps) {
-        this.props.actions.login(formProps);
+        this.props.actions.login(formProps).then(() =>
+            this.props.history.replace(Common.Courses)
+        );
     }
 
     render() {

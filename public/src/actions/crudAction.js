@@ -100,8 +100,6 @@ export function storeItem(entity, data) {
                     'success',
                     'Usuário adicionado com sucesso.'
                 ));
-
-                // browserHistory.goBack();
             })
             .catch((error) => {
                 errorHandler(dispatch, error.response, ActionType.FAILURE);

@@ -23,7 +23,7 @@ import * as FlashMessage from '../actions/flashMessage';
 export function login({ email, password }) {
     return function (dispatch) {
         dispatch(apiAction.apiRequest());
-        axios.post(AppConstant.API_URL + 'auth/login', { email, password }).then((response) => {
+        return axios.post(AppConstant.API_URL + 'auth/login', { email, password }).then((response) => {
                 dispatch({
                     type: ActionType.LOG_IN_SUCCESS,
                     payload: response.data.token,
@@ -35,7 +35,6 @@ export function login({ email, password }) {
                 cookie.set(AppConstant.TOKEN, response.data.token, { path: '/' });
                 cookie.set(AppConstant.USER_FIRST_NAME, response.data.user.first_name, { path: '/' });
                 cookie.set(AppConstant.USER_LAST_NAME, response.data.user.last_name, { path: '/' });
-                window.location.href = AppConstant.ROOT_URL + 'courses';
             })
             .catch((error) => {
                 authErrorHandler(dispatch, error.response, ActionType.LOG_IN_FAILURE);

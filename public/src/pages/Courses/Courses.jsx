@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Common from '../../constants/common';
 import { fetchAll } from '../../actions/crudAction';
 import CourseCard from '../../components/CourseCard';
 
@@ -14,12 +15,12 @@ class Courses extends Component {
 
     componentWillMount() {
         const { fetch } = this.props;
-        fetch('courses');
+        fetch(Common.Courses);
     }
 
     render() {
         const { courses, match } = this.props;
-        const path = match.path === '/' ? 'courses' : match.path;
+        const path = match.path === '/' ? Common.Courses : match.path;
 
         const linkList = courses ? courses.map(course => (
             <CourseCard key={course._id} course={course} path={path} />
