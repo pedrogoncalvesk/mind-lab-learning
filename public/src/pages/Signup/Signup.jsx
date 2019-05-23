@@ -10,7 +10,7 @@ import LockOutlined from '@material-ui/icons/LockOutlined';
 import Person from '@material-ui/icons/Person';
 import PersonOutline from '@material-ui/icons/PersonOutline';
 
-import Common from '../../constants/common';re
+import Common from '../../constants/common';
 import * as apiAction from '../../actions/apiAction';
 import * as crudAction from '../../actions/crudAction';
 import * as flashMessage from '../../actions/flashMessage';
