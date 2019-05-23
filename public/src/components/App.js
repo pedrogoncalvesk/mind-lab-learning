@@ -9,7 +9,6 @@ import Courses from '../pages/Courses';
 import Course from '../pages/Course';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import Forgot from '../pages/Forgot';
 import NotFound from '../pages/NotFound';
 
 import cookies from '../utils/cookies';
@@ -48,7 +47,6 @@ function App() {
                 )} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/forgot" component={Forgot} />
                 <Route render={() => (
                     <Base>
                         <NotFound />

@@ -6,35 +6,11 @@ import classnames from 'classnames';
 
 import Avatar from '@material-ui/core/Avatar';
 
-const styles = {
-    avatar: {
-        borderRadius: 'unset',
-        width: '230px',
-        height: '56px',
-    },
-    avatarImg: {
-        height: '70%',
-    },
-    inherit: { textAlign: 'inherit' },
-    left: {
-        justifyContent: 'flex-start',
-        marginRight: 'auto',
-    },
-    center: {
-        justifyContent: 'center',
-        margin: 'auto'
-    },
-    right: {
-        justifyContent: 'flex-end',
-        marginLeft: 'auto',
-    },
-    justify: { textAlign: 'justify' }
-};
+import styles from './styles';
 
 class Logo extends Component {
 
     static propTypes = {
-        classes: PropTypes.object.isRequired,
         to: PropTypes.string,
         align: PropTypes.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
         className: PropTypes.string,

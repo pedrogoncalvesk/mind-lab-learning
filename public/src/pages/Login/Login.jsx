@@ -1,92 +1,150 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Field, reduxForm } from 'redux-form';
+import { Form, Field } from 'react-final-form';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
-import { Avatar, Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, InputAdornment, Snackbar, Button, Grid } from '@material-ui/core';
+import Email from '@material-ui/icons/Email';
+import LockOutlined from '@material-ui/icons/LockOutlined';
 
 import * as authService from '../../services/authService';
 import * as flashMessage from '../../actions/flashMessage';
 
 import Logo from '../../components/Logo';
 import FlashMessage from '../../components/FlashMessage';
-import RenderText from '../../components/RenderText';
+import Input from '../../components/Input';
 
 import styles from './styles';
 
 class Login extends Component {
 
-    static propTypes = {
-        handleSubmit: PropTypes.func.isRequired,
-        submitting: PropTypes.bool.isRequired
-    };
-
     constructor(props) {
         super(props);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = { flashMessageOpen: false };
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const { message: { text } } = this.props;
+        const { message: { text: textOld } } = prevProps;
+
+        if (prevState.flashMessageOpen === this.state.flashMessageOpen) {
+            if (textOld === null && text !== null) {
+                this.setState({ flashMessageOpen: true });
+            } else if (textOld !== null && text === null) {
+                this.setState({ flashMessageOpen: false });
+            }
+        }
     }
 
     componentWillUnmount() {
         this.props.actions.removeFlashMessage();
     }
 
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.props.actions.removeFlashMessage();
+    };
+
     handleSubmit(formProps) {
         this.props.actions.login(formProps);
     }
 
     render() {
-        let message = this.props.message;
-        const { handleSubmit, submitting, classes } = this.props;
+        const { classes, message } = this.props;
 
         return (
-            <div className={classes.root}>
-                <Paper className={classes.paper} elevation={1}>
-                    <Logo align="center" />
-                    <Typography variant="subtitle1" align="center">
-                        Faça login na sua conta com seu email e senha.
-                    </Typography>
-                    <FlashMessage message={message} />
-                    <form method="post" onSubmit={handleSubmit(this.handleSubmit)}>
-                        <Field
-                            name="email"
-                            component={RenderText}
-                            type="email"
-                            label="Email"
-                        >
-                            <span className="glyphicon glyphicon-envelope form-control-feedback"></span>
-                        </Field>
+            <Grid container className={classes.root} justify="center">
+                <Grid item xs={12} sm={6} md={4}>
+                    <Paper className={classes.paper} elevation={1}>
+                        <Logo align="center" className={classes.logo} />
 
-                        <Field
-                            name="password"
-                            component={RenderText}
-                            type="password"
-                            label="Senha"
-                        >
-                            <span className="glyphicon glyphicon-lock form-control-feedback"></span>
-                        </Field>
+                        <Typography variant="subtitle1" align="center">
+                            Faça login na sua conta com seu email e senha.
+                        </Typography>
 
-                        <div className="row">
-                            <div className="col-xs-4">
-                                <button type="submit" className="btn btn-primary btn-block btn-flat"
-                                        disabled={submitting}>Login
-                                </button>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <br />
-                            <div className="col-xs-8">
-                                {/*<Link to={'/forgot'}>I forgot my password</Link>*/}
-                                {/*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/}
-                                <Link to={'/signup'}>Cadastre-se</Link>
-                            </div>
-                        </div>
-                    </form>
-                </Paper>
-            </div>
+                        <Snackbar
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            open={this.state.flashMessageOpen}
+                            autoHideDuration={6000}
+                            onClose={this.handleClose}
+                        >
+                            <FlashMessage
+                                onClose={this.handleClose}
+                                variant={message.type || 'error'}
+                                message={message.text || ''}
+                            />
+                        </Snackbar>
+
+                        <Form
+                            onSubmit={(props) => this.handleSubmit(props)}
+                            validate={values => {
+                                const errors = {};
+
+                                if (!values.email) {
+                                    errors.email = 'O campo de email é obrigatório.';
+                                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                                    errors.email = 'Email inválido.';
+                                }
+
+                                if (!values.password) {
+                                    errors.password = 'O campo de senha é obrigatório.';
+                                }
+
+                                return errors;
+                            }}
+                            render={({ handleSubmit, pristine, invalid, submitting }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <Field name="email"
+                                           label="Email"
+                                           type="email"
+                                           placeholder="email@example.com"
+                                           startAdornment={(
+                                               <InputAdornment position="start">
+                                                   <Email color="action" />
+                                               </InputAdornment>
+                                           )}
+                                           component={Input} />
+                                    <Field name="password"
+                                           label="Senha"
+                                           type="password"
+                                           autoComplete="off"
+                                           startAdornment={(
+                                               <InputAdornment position="start">
+                                                   <LockOutlined color="action" />
+                                               </InputAdornment>
+                                           )}
+                                           component={Input} />
+                                    <Button type="submit"
+                                            variant="outlined"
+                                            color="primary"
+                                            fullWidth
+                                            disabled={pristine || invalid || submitting}
+                                            className={classes.button}>
+                                        Login
+                                    </Button>
+
+                                    {/*<Link to={'/forgot'}>I forgot my password</Link>*/}
+                                    <Typography variant="button"
+                                                align="center"
+                                                component={Link}
+                                                to="/signup"
+                                                gutterBottom>
+                                        Cadastre-se
+                                    </Typography>
+                                </form>
+                            )}
+                        />
+                    </Paper>
+                </Grid>
+            </Grid>
         );
     }
 }
@@ -101,21 +159,4 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(_.assign({}, authService, flashMessage), dispatch)
 });
 
-const validateLogin = values => {
-    const errors = {};
-    if (!values.email) {
-        errors.email = '(O campo de email é obrigatório.)';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Email inválido.';
-    }
-
-    if (!values.password) {
-        errors.password = '(O campo de senha é obrigatório.)';
-    }
-    return errors;
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-    form: 'Login',
-    validate: validateLogin
-})(withStyles(styles)(Login)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

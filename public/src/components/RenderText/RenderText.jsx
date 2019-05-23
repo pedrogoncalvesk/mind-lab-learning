@@ -6,13 +6,12 @@ class RenderText extends Component {
     static propTypes = {
         input: PropTypes.object.isRequired,
         label: PropTypes.string,
-        type: PropTypes.string.isRequired,
         meta: PropTypes.object,
-        children: PropTypes.object.isRequired
+        children: PropTypes.object
     };
 
     render() {
-        const { input, label, type, meta: { touched, error, invalid, warning }, children } = this.props;
+        const { input: { type, ...input }, label, meta: { touched, error, invalid, warning }, children } = this.props;
 
         return (
             <div className={`form-group has-feedback ${touched && invalid ? 'has-error' : ''}`}>
