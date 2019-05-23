@@ -54,8 +54,7 @@ No terminal, execute os seguintes comandos:
 - JSON Web Tokens(jwt) - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - MongoDB object modeling tool- [mongoose](http://mongoosejs.com/)
 - Predictable state container - [Redux](http://redux.js.org/)
-- Subscription-based form state management
- - [Final Form](https://github.com/final-form/final-form)
+- Subscription-based form state management - [Final Form](https://github.com/final-form/final-form)
 - Subscription-based form state management for React - [React Final Form](https://github.com/final-form/react-final-form)
 - Declarative routing for React - [react-router](https://reacttraining.com/react-router/)
 - Code linting tool - [ESLint](http://eslint.org/)
