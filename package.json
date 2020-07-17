@@ -45,7 +45,7 @@
     "history": "^4.9.0",
     "http-status-codes": "^1.2.0",
     "jsonwebtoken": "^7.4.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "mongoose": "^4.11.7",
     "mongoose-findorcreate": "^3.0.0",
     "morgan": "^1.9.1",
